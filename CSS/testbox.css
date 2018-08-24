@@ -1,13 +1,14 @@
 body{
-    background-color: lemonchiffon;
+    background: -moz-linear-gradient(top,lemonchiffon,skyblue);
+    background: -webkit-linear-gradient(top,lemonchiffon,skyblue);
+    background: linear-gradient(to bottom,lemonchiffon,skyblue);
     font-family: 'Avenir','HG行書体','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' ;
 }
 .back{
     width: 100%;
-    margin-right: auto;margin-left: auto;
     font-size: 50px;
     position: fixed;
-    text-align: center;
+    margin-left: 80%;
     bottom: 10%;
     left:0;
 }
@@ -29,6 +30,23 @@ height: 300px;
    height: 50px;
    border-radius: 30px;
    cursor: no-drop;
+}
+.scroll{
+    width: 150px;
+    height: 120px;
+    margin-right: auto;margin-left: auto;
+    font-size:40px;
+    overflow:auto;
+}
+table{
+    background: white;
+    font-size: 20px;
+    margin-right: auto;margin-left: auto;
+    border-collapse:collapse;
+    border: solid 5px red
+}
+table th,td{
+    border: dashed 3px red;
 }
 .twitter{font-size: 4.0em;color:aqua}
 .twitter:hover{
