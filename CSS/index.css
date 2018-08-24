@@ -1,5 +1,5 @@
  @charset "UTF-8";
- body p{font-size: 1.5em}
+ body p{font-size: 5.0em}
  body{
      font-family: 'Avenir','HG行書体','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' ;
      background:linear-gradient(45deg,plum,skyblue,palegreen);
