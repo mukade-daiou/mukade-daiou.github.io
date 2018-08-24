@@ -1,0 +1,35 @@
+body{
+    background-color: lemonchiffon;
+    font-family: 'Avenir','HG行書体','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' ;
+}
+.back{
+    width: 100%;
+    margin-right: auto;margin-left: auto;
+    font-size: 50px;
+    position: fixed;
+    text-align: center;
+    bottom: 10%;
+    left:0;
+}
+.waka{
+-webkit-writing-mode:vertical-rl;
+-ms-writing-mode: tb-rl;
+writing-mode: vertical-rl;
+font-size:2em;
+/*高さを指定*/
+width: 50%;
+height: 300px;
+}
+.switch01{
+   background-color:aquamarine;
+   font-size: 3em;
+   font-weight: bold;
+   padding: 10px 20px 10px 20px;
+   width: 250px;
+   height: 50px;
+   border-radius: 30px;
+   cursor: no-drop;
+}
+.twitter{font-size: 4.0em;color:aqua}
+.twitter:hover{
+   color:blue}
