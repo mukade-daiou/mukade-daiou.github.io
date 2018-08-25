@@ -1,4 +1,5 @@
  @charset "UTF-8";
+@import "easing.scss";
  body p{font-size: 1.5em}
  body{
      font-family: 'Avenir','HG行書体','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' ;
@@ -25,7 +26,18 @@
       }
  .chu{
      width: 200px;
-     padding-top: 10px
+     padding-top: 10px;
+     animation:chu_apper 0.8s cubic-bezier(.55, .085, .68, .53) 0s 1 alternate forwards running;
+     /*animation:chu_slide 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s 1 alternate forwards running;*/
+    }
+ @keyframes chu_apper{
+     0%{transform: scale(1);}
+     50%{transform: scale(5);}
+     100%{transform: scale(2);}
+ }
+ @keyframes chu_slide{
+     0%{transform: translateX(0px);}
+     100%{transform: translateX(-100px);}
  }
  a{text-decoration:none;color:blueviolet}
  a:hover{
@@ -41,3 +53,4 @@
      width: 100px;
      transform: scale(-1,1)
  }
+

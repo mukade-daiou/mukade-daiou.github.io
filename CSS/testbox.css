@@ -10,6 +10,7 @@ body{
     position: fixed;
     margin-left: 80%;
     bottom: 10%;
+    text-decoration: none;
     left:0;
 }
 .waka{
@@ -21,7 +22,7 @@ font-size:2em;
 width: 50%;
 height: 300px;
 }
-.switch01{
+.switch{
    background-color:aquamarine;
    font-size: 3em;
    font-weight: bold;
