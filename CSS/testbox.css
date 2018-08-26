@@ -32,6 +32,7 @@ height: 300px;
    cursor: pointer;
    border-radius: 30px;
 }
+
 .movekey{
     display: inline-block;
     display: table-cell;
@@ -63,6 +64,11 @@ height: 300px;
     left:-80px;
     top:90px;
 }
+#reset{
+    position: relative;
+    left:-260px;
+    top:90px;
+}
 #chu{
     width: 100px;
     height: 100px;
@@ -71,12 +77,56 @@ height: 300px;
     left:200px;
     transform: scale(1,1);
 }
+
 .scroll{
     width: 150px;
     height: 120px;
     margin-right: auto;margin-left: auto;
     font-size:40px;
     overflow:auto;
+}
+
+.textbox{
+    display: inline-block;
+    width: 400px;
+    height:40px;
+    font-size: 40px;
+    position: relative;
+    left:600px;
+}
+.textbox:focus{
+    box-shadow: 0 0 7px blue;
+}
+.enter{
+    display: inline-block;
+    height: 40px;
+    position: relative;
+    left:600px;
+    top:-10px;
+}
+.enter:hover{
+    box-shadow: 0 0 7px blue;
+}
+.textbox2{
+    display: inline-block;
+    width: 400px;
+    height:40px;
+    font-size: 40px;
+    position: relative;
+    left:600px;
+}
+.textbox2:focus{
+    box-shadow: 0 0 7px blue;
+}
+.enter2{
+    display: inline-block;
+    height: 40px;
+    position: relative;
+    top :-10px;
+    left:600px;
+}
+.enter2:hover{
+    box-shadow: 0 0 7px blue;
 }
 table{
     background: white;
