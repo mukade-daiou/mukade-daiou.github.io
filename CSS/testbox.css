@@ -29,8 +29,47 @@ height: 300px;
    padding: 10px 20px 10px 20px;
    width: 250px;
    height: 50px;
+   cursor: pointer;
    border-radius: 30px;
-   cursor: no-drop;
+}
+.movekey{
+    display: inline-block;
+    display: table-cell;
+    text-decoration: none;
+    font-size: 70px;
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    vertical-align: middle;
+    background: gray;
+    color: white;
+}
+#up{
+    position: relative;
+    left:100px;
+}
+#down{
+    position: relative;
+    left:10px;
+    top:180px;
+}
+#left{
+    position: relative;
+    left:-170px;
+    top:90px;
+}
+#right{
+    position: relative;
+    left:-80px;
+    top:90px;
+}
+#chu{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top:0px;
+    left:200px;
+    transform: scale(1,1);
 }
 .scroll{
     width: 150px;
