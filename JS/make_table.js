@@ -14,5 +14,5 @@ function make_table(name,json_link,tags){
 }
 
 $(document).ready(function(){
-    make_table("table","https://mukade-daiou.github.io/JS/test.json",["name","solved"]);
+    make_table("table","https://mukade-daiou.github.io/data/test.json",["name","solved"]);
 })
