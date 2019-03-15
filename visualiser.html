@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>visualiser</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        td {
+            border: solid 2px black;
+            height: 40px;
+            width: 40px;
+            min-width: 40px;
+            max-height: 40px;
+        }
+
+        table {
+            margin-top: 30px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form-inline  col-sm-6  mt-2">
+        <div class="form-group">
+            <label for="height">height</label>
+            <input type="number" id="height" value="3" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="width">width</label>
+            <input type="number" id="width" value="3" class="form-control">
+        </div>
+        <button type="button" class="btn btn-primary .ml-2" onclick="makeTable()">Enter</button>
+    </form>
+    <h2 class="ml-5 mt-3">
+        手数:
+        <span id="count">
+            0
+        </span>
+    </h2>
+    <div id="table">
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+<script type="text/javascript">
+    var height, width, state, count;
+    function makeTable() {
+        count = 0;
+        document.getElementById("count").textContent = count;
+        height = document.getElementById("height").value;
+        width = document.getElementById("width").value;
+        state = new Array(height);
+        for (let i = 0; i < height; ++i) { state[i] = new Array(width).fill(0); }
+        var rows = [];
+        var table = document.createElement("table");
+
+        for (i = 0; i < height; i++) {
+            rows.push(table.insertRow(-1));  // 行の追加
+            for (j = 0; j < width; j++) {
+                cell = rows[i].insertCell(-1);
+                cell.id = String(i) + "_" + String(j);
+            }
+        }
+        document.getElementById("table").textContent = null;
+        document.getElementById("table").appendChild(table);
+        reverse();
+    }
+    function reverse() {
+        for (let i = 0; i < height; ++i) {
+            for (let j = 0; j < width; ++j) {
+                var target = document.getElementById(String(i) + "_" + String(j));
+                target.onclick = function () {
+                    ++count;
+                    document.getElementById("count").textContent = count;
+                    for (let a = -1; a < 2; ++a) {
+                        for (let b = -1; b < 2; ++b) {
+                            if (a + i >= 0 && b + j >= 0 && a + 1 < height && b + j < width) {
+                                state[i + a][j + b] = state[i + a][j + b] ^ 1;
+                                console.log(state[i + a][j + b]);
+                                if (state[i + a][j + b]) {
+                                    document.getElementById(String(i + a) + "_" + String(j + b)).style.background = "Blue";
+                                }
+                                else {
+                                    document.getElementById(String(i + a) + "_" + String(j + b)).style.background = "White";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    window.onload = function () {
+        makeTable();
+    };
+</script>
+
+</html>
