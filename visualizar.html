@@ -69,6 +69,7 @@
     function makeTable() {
         count = 0;
         document.getElementById("count").textContent = count;
+        document.getElementById("shortest").textContent = 0;
         height = document.getElementById("height").value;
         width = document.getElementById("width").value;
         state = new Array(height);
@@ -90,7 +91,7 @@
             rows.push(table2.insertRow(-1));  // 行の追加
             for (j = 0; j < width; j++) {
                 cell = rows[i].insertCell(-1);
-                cell.id = String(i) + "-" + String(j);
+                cell.id = i + "-" + j;
             }
         }
         document.getElementById("table").textContent = null;
@@ -112,6 +113,11 @@
                     else{
                         document.getElementById(i+'-'+j).style.background="White"
                     }
+                    let ct=0;
+                    for(let i=0;i<height;++i)
+                        for(let j=0;j<width;++j)
+                            if(clickedState[i][j])++ct;
+                    document.getElementById('shortest').textContent= ct;
                     document.getElementById("count").textContent = count;
                     for (let a = -1; a < 2; ++a) {
                         for (let b = -1; b < 2; ++b) {
@@ -127,11 +133,6 @@
                             }
                         }
                     }
-                    let ct=0;
-                    for(let i=0;i<height;++i)
-                        for(let j=0;j<width;++j)
-                            if(clickedState[i][j])++ct;
-                    document.getElementById('shortest').textContent= ct;
                 }
             }
         }
