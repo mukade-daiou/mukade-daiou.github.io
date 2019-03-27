@@ -41,7 +41,16 @@
             0
         </span>
     </h2>
+    <h2 class="ml-5 mt-3">
+        最短手数:
+        <span id="shortest">
+            0
+        </span>
+    </h2>
     <div id="table">
+
+    </div>
+    <div id="clicked_table">
 
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -56,16 +65,18 @@
 </body>
 
 <script type="text/javascript">
-    var height, width, state, count;
+    var height, width, state, count, clickedState;
     function makeTable() {
         count = 0;
         document.getElementById("count").textContent = count;
         height = document.getElementById("height").value;
         width = document.getElementById("width").value;
         state = new Array(height);
-        for (let i = 0; i < height; ++i) { state[i] = new Array(width).fill(0); }
+        clickedState = new Array(height);
+        for (let i = 0; i < height; ++i) { state[i] = new Array(width).fill(0);clickedState[i] = new Array(width).fill(0); }
         var rows = [];
         var table = document.createElement("table");
+        var table2 = document.createElement("table");
 
         for (i = 0; i < height; i++) {
             rows.push(table.insertRow(-1));  // 行の追加
@@ -74,8 +85,18 @@
                 cell.id = String(i) + "_" + String(j);
             }
         }
+        rows=[]
+        for (i = 0; i < height; i++) {
+            rows.push(table2.insertRow(-1));  // 行の追加
+            for (j = 0; j < width; j++) {
+                cell = rows[i].insertCell(-1);
+                cell.id = String(i) + "-" + String(j);
+            }
+        }
         document.getElementById("table").textContent = null;
         document.getElementById("table").appendChild(table);
+        document.getElementById("clicked_table").textContent = null;
+        document.getElementById("clicked_table").appendChild(table2);
         reverse();
     }
     function reverse() {
@@ -84,6 +105,13 @@
                 var target = document.getElementById(String(i) + "_" + String(j));
                 target.onclick = function () {
                     ++count;
+                    clickedState[i][j] = clickedState[i][j]^1;
+                    if(clickedState[i][j]){
+                        document.getElementById(i+'-'+j).style.background="Red"
+                    }
+                    else{
+                        document.getElementById(i+'-'+j).style.background="White"
+                    }
                     document.getElementById("count").textContent = count;
                     for (let a = -1; a < 2; ++a) {
                         for (let b = -1; b < 2; ++b) {
@@ -99,6 +127,11 @@
                             }
                         }
                     }
+                    let ct=0;
+                    for(let i=0;i<height;++i)
+                        for(let j=0;j<width;++j)
+                            if(clickedState[i][j])++ct;
+                    document.getElementById('shortest').textContent= ct;
                 }
             }
         }
