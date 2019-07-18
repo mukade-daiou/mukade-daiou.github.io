@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
+        canvas {
+            user-select: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/CSS/mkd-debugger.css">
+    <link rel="stylesheet" href="static/CSS/tab.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="static/JS/mkd-debugger-editor.js"></script>
+</head>
+
+<body>
+    <div id="content" class="ml-5 mt-5 ">
+        <div class="cp_tab">
+            <input type="radio" name="cp_tab" id="tab1_1" aria-controls="first_tab01" value="1" checked>
+            <label for="tab1_1">１問目</label>
+            <input type="radio" name="cp_tab" id="tab1_2" value="2" aria-controls="second_tab01">
+            <label for="tab1_2">２問目</label>
+            <input type="radio" name="cp_tab" id="tab1_3" value="3" aria-controls="third_tab01">
+            <label for="tab1_3">３問目</label>
+            <div class="cp_tabpanels">
+                <div id="problem1" class="cp_tabpanel">
+                    <form class='col-sm-8 mb-3' action="#" method="POST">
+                        <input type="text" value="1" name="tab" style="display:none">
+                        <textarea name="map" id="mapCode1" style="display:none"></textarea>
+                        <label for="height">Height</label>
+                        <input type="number" name="height" min="1" class="col-sm-2 mb-2 mr-2" id="h1">
+                        <label for="width">Width </label>
+                        <input type="number" name="width" min="1" class='col-sm-2' id="w1">
+                        <button onclick="redrawMap()" type="button">生成</button>
+                        <button type="submit" onclick="generate()" class="btn btn-success">保存</button>
+                    </form>
+                    <canvas id="map1" height="400" width="400"></canvas>
+                </div>
+                <div id="problem2" class="cp_tabpanel">
+                    <form class='col-sm-8 mb-3' action="#" method="POST">
+                        <input type="text" value="1" name="tab" style="display:none">
+                        <textarea name="map" id="mapCode2" style="display:none"></textarea>
+                        <label for="height">Height</label>
+                        <input type="number" name="height" min="1" class="col-sm-2 mb-2 mr-2" id="h2">
+                        <label for="width">Width </label>
+                        <input type="number" name="width" min="1" class='col-sm-2' id="w2">
+                        <button onclick="redrawMap()" type="button">生成</button>
+                        <button type="submit" onclick="generate()" class="btn btn-success">保存</button>
+                    </form>
+                    <canvas id="map2" height="400" width="400"></canvas>
+                </div>
+                <div id="problem3" class="cp_tabpanel">
+                    <form class='col-sm-8 mb-3' action="#" method="POST">
+                        <input type="text" value="1" name="tab" style="display:none">
+                        <textarea name="map" id="mapCode3" style="display:none"></textarea>
+                        <label for="height">Height</label>
+                        <input type="number" name="height" min="1" class="col-sm-2 mb-2 mr-2" id="h3">
+                        <label for="width">Width </label>
+                        <input type="number" name="width" min="1" class='col-sm-2' id="w3">
+                        <button onclick="redrawMap()" type="button">生成</button>
+                        <button type="submit" onclick="generate()" class="btn btn-success">保存</button>
+                    </form>
+                    <canvas id="map3" height="400" width="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let maps = {{maps | safe}};
+</script>
+
+</html>
