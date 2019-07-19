@@ -234,36 +234,37 @@ class Player {
 function createMap(tab) {
     let startX = 0,
         startY = 0;
-    let map = maps[tab - 1].split(/\r|\n/);
-    console.log(map);
-    for (let j in map) {
-        for (let k in map[j]) {
-            clearRect(tab, j, k);
-            drawRect(tab, j, k);
-            if (map[j][k] == "s") {
-                startX = Number(j);
-                startY = Number(k);
-            }
-            if (map[j][k] == "o") {
-                drawCircle(tab, j, k);
-            }
-            if (map[j][k] == "x") {
-                drawBlock(tab, j, k);
+    $.get("data/map/" + tab + ".txt", data => {
+        let map = data.split(/\n|\r\n/);
+        for (let j in map) {
+            for (let k in map[j]) {
+                clearRect(tab, j, k);
+                drawRect(tab, j, k);
+                if (map[j][k] == "s") {
+                    startX = Number(j);
+                    startY = Number(k);
+                }
+                if (map[j][k] == "o") {
+                    drawCircle(tab, j, k);
+                }
+                if (map[j][k] == "x") {
+                    drawBlock(tab, j, k);
+                }
             }
         }
-    }
-    if (mapState.length >= tab) {
-        mapState[tab - 1] = map;
-    } else {
-        mapState.push(map);
-    }
-    if (players.length >= tab) {
-        players[tab - 1].reset();
-        players[tab - 1] = new Player(tab, startX, startY);
-    } else {
-        players.push(new Player(tab, startX, startY));
-    }
+        if (mapState.length >= tab) {
+            mapState[tab - 1] = map;
+        } else {
+            mapState.push(map);
+        }
+        if (players.length >= tab) {
+            players[tab - 1].reset();
+            players[tab - 1] = new Player(tab, startX, startY);
+        } else {
+            players.push(new Player(tab, startX, startY));
+        }
 
+    });
 }
 let players = [];
 $(document).ready(() => {

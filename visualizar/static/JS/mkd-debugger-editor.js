@@ -58,35 +58,36 @@ function drawPlayer(tab, x, y) {
 }
 
 function createMap(tab) {
-    let map = maps[tab - 1].split(/\r|\n/);
-    for (let i in map) {
-        map[i] = map[i].split('');
-    }
-    now_width.push(map.length);
-    now_height.push(map[0].length);
-    document.getElementById('h' + tab).value = map[0].length;
-    document.getElementById('w' + tab).value = map.length;
-    for (let j in map) {
-        for (let k in map[j]) {
-            clearRect(tab, j, k);
-            drawRect(tab, j, k);
-            if (map[j][k] == 's') {
-                drawPlayer(tab, j, k);
-            }
-            if (map[j][k] == 'o') {
-                drawCircle(tab, j, k);
-            }
-            if (map[j][k] == 'x') {
-                drawBlock(tab, j, k);
+    $.get("data/map/" + tab + ".txt", data => {
+        let map = data.split(/\r|\n/);
+        for (let i in map) {
+            map[i] = map[i].split('');
+        }
+        now_width.push(map.length);
+        now_height.push(map[0].length);
+        document.getElementById('h' + tab).value = map[0].length;
+        document.getElementById('w' + tab).value = map.length;
+        for (let j in map) {
+            for (let k in map[j]) {
+                clearRect(tab, j, k);
+                drawRect(tab, j, k);
+                if (map[j][k] == 's') {
+                    drawPlayer(tab, j, k);
+                }
+                if (map[j][k] == 'o') {
+                    drawCircle(tab, j, k);
+                }
+                if (map[j][k] == 'x') {
+                    drawBlock(tab, j, k);
+                }
             }
         }
-    }
-    if (mapState.length >= tab) {
-        mapState[tab - 1] = map;
-    } else {
-        mapState.push(map);
-    }
-
+        if (mapState.length >= tab) {
+            mapState[tab - 1] = map;
+        } else {
+            mapState.push(map);
+        }
+    });
 }
 
 function redrawMap() {
@@ -110,6 +111,7 @@ function redrawMap() {
     }
     mapState[tab - 1] = map;
 }
+
 
 function updateMap(tab, x, y) {
     state = mapState[tab - 1][x][y];
