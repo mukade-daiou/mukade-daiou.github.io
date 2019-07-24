@@ -212,13 +212,13 @@ class Player {
     if (command == "s") {
       if (
         this.checkPos(
-          this.x + this.way[(this.arg % 360) / 90]["x"],
-          this.y + this.way[(this.arg % 360) / 90]["y"]
+          this.x + this.way[((this.arg + 270) % 360) / 90]["x"],
+          this.y + this.way[((this.arg + 270) % 360) / 90]["y"]
         )
       ) {
         this.reset();
-        this.x += this.way[(this.arg % 360) / 90]["x"];
-        this.y += this.way[(this.arg % 360) / 90]["y"];
+        this.x += this.way[((this.arg + 270) % 360) / 90]["x"];
+        this.y += this.way[((this.arg + 270) % 360) / 90]["y"];
       }
     }
     if (command == "r") {
@@ -260,7 +260,6 @@ function createMap(tab) {
       mapState.push(map);
     }
     if (players.length >= tab) {
-      players[tab - 1].reset();
       players[tab - 1] = new Player(tab, startX, startY);
     } else {
       players.push(new Player(tab, startX, startY));
