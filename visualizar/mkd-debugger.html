@@ -1,93 +1,138 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>MKD-debugger</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/CSS/mkd-debugger.css">
-    <link rel="stylesheet" href="static/CSS/tab.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static/CSS/mkd-debugger.css" />
+    <link rel="stylesheet" href="static/CSS/tab.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
     <script type="text/javascript" src="static/JS/mkd-debugger.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="content" class="ml-5 mt-5 ">
-        <form>
-            <div class="form-group">
-                <label for="code" class="control-label">
-                    <h5>コード(<span id="bytes">0</span>バイト)</h5>
-                </label>
-                <textarea type="text" id="code" name="code" class="code-box form-control col-sm-6"
-                    oninput="bytesUpdate()"></textarea>
-                <div class=" form-inline mt-2">
-                    <label for="speed" class="control-label mr-3">Speed</label>
-                    <select name="speed" id="speed" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <button type="button" class="btn btn-primary mt-1" onclick="startCodeRun()">実行</button>
-            </div>
-
-        </form>
-        <div>
-            <h5>展開済み文字列 <span id="now_index">0</span>処理目/<span id="max_index">0</span>処理</h5>
-            <div id="expanded_code" class="col-sm-10">
-            </div>
+      <form>
+        <div class="form-group">
+          <label for="code" class="control-label">
+            <h5>コード(<span id="bytes">0</span>バイト)</h5>
+          </label>
+          <textarea
+            type="text"
+            id="code"
+            name="code"
+            class="code-box form-control col-sm-6"
+            oninput="bytesUpdate()"
+          ></textarea>
+          <div class=" form-inline mt-2">
+            <label for="speed" class="control-label mr-3">Speed</label>
+            <select name="speed" id="speed" class="form-control">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary mt-1"
+            onclick="startCodeRun()"
+          >
+            実行
+          </button>
         </div>
+      </form>
+      <div>
+        <h5>
+          展開済み文字列 <span id="now_index">0</span>処理目/<span
+            id="max_index"
+            >0</span
+          >処理
+        </h5>
+        <div id="expanded_code" class="col-sm-10"></div>
+      </div>
 
-        <div class="cp_tab">
-            <input type="radio" name="cp_tab" id="tab1_1" aria-controls="first_tab01" value="1" checked>
-            <label for="tab1_1">１問目</label>
-            <input type="radio" name="cp_tab" id="tab1_2" value="2" aria-controls="second_tab01">
-            <label for="tab1_2">２問目</label>
-            <input type="radio" name="cp_tab" id="tab1_3" value="3" aria-controls="third_tab01">
-            <label for="tab1_3">３問目</label>
-            <div class="cp_tabpanels">
-                <div id="problem1" class="cp_tabpanel">
-                    <canvas id="map1" height="400" width="400"></canvas>
-                </div>
-                <div id="problem2" class="cp_tabpanel">
-                    <canvas id="map2" height="400" width="400"></canvas>
-                </div>
-                <div id="problem3" class="cp_tabpanel">
-                    <canvas id="map3" height="400" width="400"></canvas>
-                </div>
-            </div>
+      <div class="cp_tab">
+        <input
+          type="radio"
+          name="cp_tab"
+          id="tab1_1"
+          aria-controls="first_tab01"
+          value="1"
+          checked
+        />
+        <label for="tab1_1">１問目</label>
+        <input
+          type="radio"
+          name="cp_tab"
+          id="tab1_2"
+          value="2"
+          aria-controls="second_tab01"
+        />
+        <label for="tab1_2">２問目</label>
+        <input
+          type="radio"
+          name="cp_tab"
+          id="tab1_3"
+          value="3"
+          aria-controls="third_tab01"
+        />
+        <label for="tab1_3">３問目</label>
+        <div class="cp_tabpanels">
+          <div id="problem1" class="cp_tabpanel">
+            <canvas id="map1" height="400" width="400"></canvas>
+          </div>
+          <div id="problem2" class="cp_tabpanel">
+            <canvas id="map2" height="400" width="400"></canvas>
+          </div>
+          <div id="problem3" class="cp_tabpanel">
+            <canvas id="map3" height="400" width="400"></canvas>
+          </div>
         </div>
+      </div>
     </div>
-</body>
-<script>
+  </body>
+  <script>
     function keydown() {
-        if (event.keyCode >= 112 && event.keyCode <= 123) {
-            event.keyCode = 0;
-            return false;
-        }
-        alert("無効にできてません");
+      if (event.keyCode >= 112 && event.keyCode <= 123) {
+        event.keyCode = 0;
+        return false;
+      }
     }
     window.document.onkeydown = keydown;
-    document.oncontextmenu = function () {
-        return false;
-    }
-</script>
-
+    document.oncontextmenu = function() {
+      return false;
+    };
+  </script>
 </html>
