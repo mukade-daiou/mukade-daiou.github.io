@@ -76,5 +76,18 @@
         </div>
     </div>
 </body>
+<script>
+    function keydown() {
+        if (event.keyCode >= 112 && event.keyCode <= 123) {
+            event.keyCode = 0;
+            return false;
+        }
+        alert("無効にできてません");
+    }
+    window.document.onkeydown = keydown;
+    document.oncontextmenu = function () {
+        return false;
+    }
+</script>
 
 </html>
