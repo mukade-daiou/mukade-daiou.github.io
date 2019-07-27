@@ -146,12 +146,11 @@ let now_height = [],
     now_width = [];
 $(document).ready(() => {
     for (let i = 1; i <= 3; ++i)
-        createMap(i);
-    setClick();
+        createMap(i),
+        setClick(i);
 })
 
-function setClick() {
-    let tab = getTab();
+function setClick(tab) {
     let canvas = document.getElementById('map' + tab);
 
     function click(e) {

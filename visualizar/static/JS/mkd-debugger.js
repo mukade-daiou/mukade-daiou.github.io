@@ -141,8 +141,8 @@ function drawCircle(tab, x, y) {
   let circle = canvas.getContext("2d");
   circle.arc(x * 30 + 15, y * 30 + 15, 7, 0, (360 * Math.PI) / 180, 1);
   circle.lineWidth = 2;
-  circle.strokeStyle = "yellow";
-  circle.fillStyle = "yellow";
+  circle.strokeStyle = "orange";
+  circle.fillStyle = "orange";
   circle.fill();
   circle.stroke();
 }
@@ -158,8 +158,7 @@ class Player {
     this.x = x;
     this.y = y;
     this.arg = 0;
-    this.way = [
-      {
+    this.way = [{
         x: 0,
         y: -1
       },
