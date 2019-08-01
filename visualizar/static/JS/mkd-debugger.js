@@ -139,6 +139,7 @@ function clearRect(tab, x, y) {
 function drawCircle(tab, x, y) {
   let canvas = document.getElementById("map" + tab);
   let circle = canvas.getContext("2d");
+  circle.beginPath()
   circle.arc(x * 30 + 15, y * 30 + 15, 7, 0, (360 * Math.PI) / 180, 1);
   circle.lineWidth = 2;
   circle.strokeStyle = "orange";
